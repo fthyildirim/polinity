@@ -1,36 +1,56 @@
 <div class="container p-5">
-    <div class="row">
-        
-        <div class="d-flex justify-content-between">
-            <!-- [formControl]="search" -->
-            <div class="input-group justify-content-end">
-                <input class="" [formControl]="search" type="text"
-                name="form" />
-            </div>
-        </div>
+  <div class="row">
+    <div class="d-flex justify-content-between">
+    <div class="input-group justify-content-start">
+        <input
+          type="text"
+          type="text"
+        />
+  
+        <button
+          type="button"
+          class="btn btn-success"
+          >
+          add
+        </button>
+      </div> 
+      <!-- (click)="addItem(txtItem.value); txtItem.value = ''" -->
+      <div class="input-group justify-content-end">
+        <input class="" [formControl]="search" type="text" name="form" autocomplete="off" />
+      </div>
+    </div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  *ngFor="let character of characters">
-        <td>{{character.id}}</td>
-        <td> {{character.name}} </td>
-      </tr>
-    
-    </tbody>
-  </table>
-  <div>
-    <div *ngIf="pageableInfo">
-      <button (click)="getCharactersByUrl(pageableInfo.prev)" [disabled]="!pageableInfo.prev">Prev</button>
-      <button (click)="getCharactersByUrl(pageableInfo.next)" [disabled]="!pageableInfo.next">Next</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let character of characters">
+          <td>{{ character.id }}</td>
+          <td>{{ character.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div class="alert alert-warning" *ngIf="getCharacters().length == 0"> listede eleman yok</div> -->
+
+    <div>
+      <div *ngIf="pageableInfo">
+        <button
+          (click)="getCharactersByUrl(pageableInfo.prev)"
+          [disabled]="!pageableInfo.prev"
+        >
+          Prev
+        </button>
+        <button
+          (click)="getCharactersByUrl(pageableInfo.next)"
+          [disabled]="!pageableInfo.next"
+        >
+          Next
+        </button>
+      </div>
     </div>
   </div>
-    </div>
 </div>
-
-
