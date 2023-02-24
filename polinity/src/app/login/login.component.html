@@ -18,20 +18,25 @@
   
   </header>
   </div>
+<div class="container-fluid">
 
-<main class="form-signin w-100 m-auto">
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-    <h1 class="h3 mb-3 fw-normal text-center mt-5">Giriş yap</h1>
+  
+  <main class="form-signin w-100 m-auto">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <h1 class="h3 mb-3 fw-normal text-center mt-5">Giriş yap</h1>
+  
+      <div class="form-floating">
+        <input name="userName" type="text" #userName="ngModel" [(ngModel)]="model.userName" class="form-control" id="userName" placeholder="Kullanıcı adı">
+        <label for="floatingInput">Kullanıcı adı</label>
+      </div>
+      <div class="form-floating">
+        <input name="password" type="password" class="form-control" id="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Şifre" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <button class="w-100 btn btn-lg btn-primary" type="submit" >Giriş</button>
+    </form>
+  </main>
+  
+</div>
 
-    <div class="form-floating">
-      <input name="userName" type="text" #userName="ngModel" [(ngModel)]="model.userName" class="form-control" id="userName" placeholder="Kullanıcı adı">
-      <label for="floatingInput">Kullanıcı adı</label>
-    </div>
-    <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Şifre" required>
-      <label for="floatingPassword">Password</label>
-    </div>
-
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
-  </form>
-</main>
