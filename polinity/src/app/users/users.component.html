@@ -1,24 +1,28 @@
-<div class="container p-5">
+<div class="container-fluid p-5">
   <div class="row">
-    <div class="d-flex justify-content-between">
-    <div class="input-group justify-content-start">
-        <input
-          type="text"
-          type="text"
-        />
-  
-        <button
-          type="button"
-          class="btn btn-success"
-          >
-          add
-        </button>
-      </div> 
-      <!-- (click)="addItem(txtItem.value); txtItem.value = ''" -->
-      <div class="input-group justify-content-end">
-        <input class="" [formControl]="search" type="text" name="form" autocomplete="off" />
+  <header class="p-3 text-bg-dark">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" routerLink="/number-1" class="nav-link px-2 text-white">userList</a></li>
+          <li><a href="#" routerLink="/number-2" class="nav-link px-2 text-white">categoryList</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input [formControl]="search" type="text" name="form" autocomplete="off" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <a type="button" class="btn btn-outline-light me-2" routerLink="/login">Login</a>
+        </div>
       </div>
-    </div>
+  
+  </header>
+  </div>
+  <div class="row">
 
     <table class="table">
       <thead>

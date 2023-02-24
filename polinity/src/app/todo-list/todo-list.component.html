@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row mb-5">
+    <header class="p-3 text-bg-dark">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+  
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" routerLink="/number-1" class="nav-link px-2 text-white">userList</a></li>
+            <li><a href="#" routerLink="/number-2" class="nav-link px-2 text-white">categoryList</a></li>
+          </ul>
+
+  
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+          </div>
+        </div>
+    
+    </header>
+    </div>
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <h3 class="bg-primary text-white p-3">{{ getName() }}' todo list</h3>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="inputText"
+          (keyup.enter)="addItem()"
+        />
+        <button [class]="getBtnClasses()" class="btn" (click)="addItem()">
+          Add
+        </button>
+      </div>
+
+      <div class="form-check mb-3">
+        <input
+          type="checkbox"
+          [(ngModel)]="displayAll"
+          class="form-check-input"
+          name=""
+          id="displayAll"
+        />
+        <label for="displayAll" class="form-check-label">Hepsini Göster</label>
+      </div>
+
+      <div class="my-2">{{ displayCount() }} görev tamamlandı.</div>
+
+      <div
+        class="alert alert-warning"
+        *ngIf="getItems().length == 0; else itemsTable"
+      >
+        Tüm görevler tamamlandı.
+      </div>
+
+      <ng-template #itemsTable>
+        <table class="table table-bordered bg-secondary">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let item of getItems(); let i = index"
+              [class]="{ 'bg-danger': item.action, 'bg-success': !item.action }"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.description }}</td>
+              <td>
+                <div *ngIf="item.action; then yesTemplate; else noTemplate">
+                  Burası gösterilmez.
+                </div>
+
+                <ng-template #noTemplate> No </ng-template>
+
+                <ng-template #yesTemplate> Yes </ng-template>
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="item.action"
+                  name=""
+                  id=""
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </div>
+  </div>
+</div>

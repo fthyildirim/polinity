@@ -1,0 +1,37 @@
+<div class="row">
+  <header class="p-3 text-bg-dark">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" routerLink="/number-1" class="nav-link px-2 text-white">userList</a></li>
+          <li><a href="#" routerLink="/number-2" class="nav-link px-2 text-white">categoryList</a></li>
+        </ul>
+
+        <div class="text-end">
+          <a class="w-100 btn btn-lg btn-primary" type="submit" *ngIf="isLoggedIn()==false">Login</a>
+          <a class="w-100 btn btn-lg btn-primary" type="submit" (click)="logOut" *ngIf="isLoggedIn()==true">Logout</a>
+        </div>
+      </div>
+  
+  </header>
+  </div>
+
+<main class="form-signin w-100 m-auto">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <h1 class="h3 mb-3 fw-normal text-center mt-5">Giriş yap</h1>
+
+    <div class="form-floating">
+      <input name="userName" type="text" #userName="ngModel" [(ngModel)]="model.userName" class="form-control" id="userName" placeholder="Kullanıcı adı">
+      <label for="floatingInput">Kullanıcı adı</label>
+    </div>
+    <div class="form-floating">
+      <input name="password" type="password" class="form-control" id="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Şifre" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Giriş</button>
+  </form>
+</main>
